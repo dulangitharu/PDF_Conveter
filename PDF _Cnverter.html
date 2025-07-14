@@ -80,3 +80,14 @@
         © 2025 PDFConverter.io — Built with ❤️ using Tailwind CSS
       </div>
     </footer>
+    
+    <!-- JS -->
+    <script>
+      function convertToPDF() {
+        const fileInput = document.getElementById("fileInput");
+        const status = document.getElementById("status");
+
+        if (!fileInput.files.length) {
+          alert("Please select a file first.");
+          return;
+        }
