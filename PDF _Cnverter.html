@@ -91,3 +91,9 @@
           alert("Please select a file first.");
           return;
         }
+        
+ // Simulate conversion process
+        status.classList.remove("hidden");
+        status.textContent = "Converting your file...";
+        status.classList.remove("text-green-600");
+        status.classList.add("text-yellow-600");
