@@ -91,9 +91,16 @@
           alert("Please select a file first.");
           return;
         }
-        
+
  // Simulate conversion process
         status.classList.remove("hidden");
         status.textContent = "Converting your file...";
         status.classList.remove("text-green-600");
         status.classList.add("text-yellow-600");
+
+        setTimeout(() => {
+          status.textContent = "✅ File successfully converted to PDF!";
+          status.classList.remove("text-yellow-600");
+          status.classList.add("text-green-600");
+        }, 2000);
+      }
