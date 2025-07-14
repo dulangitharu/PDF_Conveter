@@ -10,7 +10,6 @@
     <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body class="bg-gray-50 text-gray-800 font-sans">
-
     <!-- Navbar -->
     <header class="bg-white shadow">
       <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -25,7 +24,8 @@
         </nav>
       </div>
     </header>
-     <!-- Hero Section -->
+
+    <!-- Hero Section -->
     <section class="bg-indigo-100 py-20 text-center">
       <div class="max-w-3xl mx-auto px-4">
         <h2 class="text-4xl font-bold text-indigo-800 mb-4">Convert Your Files to PDF Instantly</h2>
@@ -35,7 +35,8 @@
         </a>
       </div>
     </section>
-     <!-- Features Section -->
+
+    <!-- Features Section -->
     <section id="features" class="py-16 bg-white">
       <div class="max-w-6xl mx-auto px-6 text-center">
         <h3 class="text-2xl font-bold text-gray-800 mb-10">Why Choose Us?</h3>
@@ -58,6 +59,7 @@
         </div>
       </div>
     </section>
+
     <!-- Upload & Convert Section -->
     <section id="upload" class="py-20 bg-gray-100">
       <div class="max-w-xl mx-auto px-6 text-center">
@@ -68,43 +70,63 @@
             onclick="convertToPDF()"
             class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition"
           >
-          Convert to PDF
+            Convert to PDF
           </button>
-          <p id="status" class="mt-4 text-sm text-green-600 hidden">Converting...</p>
+
+          <p id="status" class="mt-4 text-sm hidden">Converting...</p>
+
+          <!-- Download Button -->
+          <a
+            id="downloadLink"
+            href="#"
+            download="converted-file.pdf"
+            class="hidden mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+          >
+            ⬇️ Download PDF
+          </a>
         </div>
       </div>
     </section>
+
     <!-- Footer -->
     <footer id="footer" class="bg-white border-t py-6 mt-12">
       <div class="max-w-6xl mx-auto px-4 text-center text-gray-500 text-sm">
         © 2025 PDFConverter.io — Built with ❤️ using Tailwind CSS
       </div>
     </footer>
-    
-    <!-- JS -->
+
+    <!-- JavaScript -->
     <script>
       function convertToPDF() {
         const fileInput = document.getElementById("fileInput");
         const status = document.getElementById("status");
+        const downloadLink = document.getElementById("downloadLink");
 
         if (!fileInput.files.length) {
           alert("Please select a file first.");
           return;
         }
 
- // Simulate conversion process
         status.classList.remove("hidden");
         status.textContent = "Converting your file...";
-        status.classList.remove("text-green-600");
-        status.classList.add("text-yellow-600");
+        status.className = "mt-4 text-sm text-yellow-600";
+
+        // Hide download link during conversion
+        downloadLink.classList.add("hidden");
 
         setTimeout(() => {
           status.textContent = "✅ File successfully converted to PDF!";
-          status.classList.remove("text-yellow-600");
-          status.classList.add("text-green-600");
+          status.className = "mt-4 text-sm text-green-600";
+
+          // Simulate a downloadable PDF file
+          const blob = new Blob(["This is a dummy PDF content."], { type: "application/pdf" });
+          const url = URL.createObjectURL(blob);
+          downloadLink.href = url;
+          downloadLink.classList.remove("hidden");
         }, 2000);
       }
-       // Initialize feather icons
+
+      // Load Feather Icons
       feather.replace();
     </script>
   </body>
