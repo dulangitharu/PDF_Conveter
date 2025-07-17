@@ -119,7 +119,7 @@
           status.className = "mt-4 text-sm text-green-600";
 
           // Simulate a downloadable PDF file
-          const blob = new Blob(["This is a dummy PDF content."], { type: "application/pdf" });
+          const blob = new Blob(["This is a Dummy PDF Content."], { type: "application/pdf" });
           const url = URL.createObjectURL(blob);
           downloadLink.href = url;
           downloadLink.classList.remove("hidden");
